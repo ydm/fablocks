@@ -1,4 +1,4 @@
-django-template
-===============
+fablocks
+========
 
-A simple project template for Django
+Fucking awesome blocks for Django
