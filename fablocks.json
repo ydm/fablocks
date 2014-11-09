@@ -1,0 +1,1 @@
+[{"pk": 1, "model": "fablocks.block", "fields": {"type": "html", "slug": "awesomeness", "text": "<h1>This is an awesome header</h1>\r\n\r\n<p>And his is some awesome text!</p>\r\n\r\n{% if test %}\r\n  <h2>Test passes</h2>\r\n{% else %}\r\n  <h2>Test fails</h2>\r\n{% endif %}"}}]

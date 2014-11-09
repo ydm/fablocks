@@ -1,0 +1,23 @@
+# -*- coding: utf-8 -*-
+
+from django import template
+from fablocks import models
+
+
+register = template.Library()
+
+
+@register.tag('fablock')
+def do_fablock(parser, token):
+    try:
+        _, slug = token.split_contents()
+    except ValueError:
+        raise template.TemplateSyntaxError(
+            '%r requires a single SLUG argument' % token.split_contents()[0]
+        )
+
+        try:
+    block = models.Block.objects.get(slug=slug)
+    return template.TextNode(
+        'Hello, world of fucking awesome blocks! This is %s' % slug
+    )

@@ -1,0 +1,30 @@
+# -*- coding: utf-8 -*-
+
+from django.db import models
+
+
+class Block:
+
+    TYPE_CHOICES = (
+        # Grid blocksk
+        ('container', 'Container block'),
+        ('row', 'Row block'),
+        ('col', 'Col block'),
+
+        ('html', 'HTML block'),
+        ('image', 'Image block'),
+        ('text', 'Text block'),
+    )
+
+    block_type = models.CharField(max_length=20, choices=TYPE_CHOICES)
+    body = models.TextField()
+    children = models.ManyToManyField('self')
+
+    def render(self, context):
+        pass
+
+
+class Image(models.Model):
+
+    blocks = models.ManyToManyField(Block)
+    image = models.ImageField(upload_to='fablocks/image/image/%Y/%m/%d')

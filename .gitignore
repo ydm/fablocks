@@ -1,0 +1,7 @@
+*.pyc
+TAGS
+db.sqlite3
+localsettings.py
+media
+static_root
+venv
