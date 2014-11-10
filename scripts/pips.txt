@@ -1,2 +1,3 @@
 Pillow
 django-debug-toolbar
+django-toolbelt
