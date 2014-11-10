@@ -1,0 +1,18 @@
+{
+  "name": "fablocks",
+  "version": "0.0.0",
+  "homepage": "https://github.com/ydm/fablocks",
+  "authors": [
+    "Yordan Miladinov <yordan@4web.bg>"
+  ],
+  "description": "Fucking awesome blocks need fucking awesome templates",
+  "license": "LGPLv3",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
