@@ -3,34 +3,36 @@
 from django.db import models
 
 
+def order_next(parent_block):
+    d = Relation.objects.filter(parent=parent_block).aggregate(
+        models.Max('order')
+    )
+    order = d['order__max']
+    return 1 + (order or 0)
+
+
 class Relation(models.Model):
 
     parent = models.ForeignKey('Block', related_name='parent')
     child = models.ForeignKey('Block', related_name='child')
     order = models.PositiveSmallIntegerField()
 
-    def clean(self):
-        # Assign next order by default
-        d = Relation.objects.filter(parent=self.parent).aggregate(
-            models.Max('order')
-        )
-        order = d['order__max']
-        if order is None:
-            self.order = 1
-        self.order = order + 1
+    # def save(self, *args, **kwargs):
+    #     if self.order is None:
+    #         self.order = order_next(self.parent)
+    #     return super(Relation, self).save(*args, **kwargs)
 
 
 class Block(models.Model):
 
     TYPE_CHOICES = (
-        # Grid blocksk
+        # Grid blocks
         ('container', 'Container block'),
         ('row', 'Row block'),
         ('col', 'Col block'),
 
         ('html', 'HTML block'),
         ('image', 'Image block'),
-        # ('text', 'Text block'),
     )
 
     slug = models.SlugField(max_length=100, unique=True)

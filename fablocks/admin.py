@@ -3,9 +3,9 @@ from fablocks import models
 
 
 class RelationInline(admin.StackedInline):
-    model = models.Relation
-    fk_name = 'child'
     extra = 1
+    fk_name = 'child'
+    model = models.Relation
 
 
 class BlockAdmin(admin.ModelAdmin):
@@ -13,3 +13,4 @@ class BlockAdmin(admin.ModelAdmin):
 
 
 admin.site.register(models.Block, BlockAdmin)
+admin.site.register(models.Image)

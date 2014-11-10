@@ -88,3 +88,5 @@ STATIC_URL = '/static/'
 TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, 'container/templates'),
 )
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media_root')
+MEDIA_URL = '/media/'
